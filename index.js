@@ -12,17 +12,6 @@ module.exports = function dispatcher(dispatch) {
 	
 	let content
 	
-	command.add('dispatchload', () => {
-		fs.readFile(path.join(__dirname,'content.json'),function(err,data) {
-			if(err) {
-				command.message('(Dispatcher) Error reading file content.json. Check that it is in module folder')
-				return
-			}
-			content=JSON.parse(data)
-			command.message('(Dispatcher) Copied packet data')
-		})
-	})
-	
 	command.add('dispatchpkt', (pkt,ver) => {
 		packet=pkt
 		if(ver===undefined || isNaN(ver))
@@ -33,6 +22,14 @@ module.exports = function dispatcher(dispatch) {
 	})
 	
 	command.add('dispatch', () => {
+		fs.readFile(path.join(__dirname,'content.json'),function(err,data) {
+			if(err) {
+				command.message('(Dispatcher) Error reading file content.json. Check that it is in module folder')
+				return
+			}
+			content=JSON.parse(data)
+			command.message('(Dispatcher) Copied packet data.')
+		})
 		dispatch.toClient(packet,version,content)
 		command.message('(Dispatcher) Sent Packet:'+packet+' version:'+version)
 		if(showinfo) console.log('Packet info sent:'+JSON.stringify(content))
