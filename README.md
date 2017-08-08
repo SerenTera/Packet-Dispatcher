@@ -31,3 +31,6 @@ Type commands in /proxy chat or prefix with '!' in other chats
 - Write the packet info in object form in content.json (See 'working with JSON' on the format)
 - Use `dispatchpkt <packetname> <version>`, unless default packet and version is desired, OR you have already changed it previously and wish to use the same packet (in which case you just skip straight to `dispatch` command).
 - Use `dispatch` command.
+
+## Crashes
+If proxy crashes, this usually is because the format you used in writing content.json is wrong, or the packet you sent to the client would crash the game anyway.
