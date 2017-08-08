@@ -24,13 +24,10 @@ This is a packet for S_CHAT, and the string values and keys of the packet info o
 ## Commands
 Type commands in /proxy chat or prefix with '!' in other chats
 
-* `dispatchload` - loads up the packet info object in 'content.json' into the module's <content> variable. Do this before using dispatch command
-
 * `dispatchpkt <packetname> <version>` - Changes packet and version to dispatch. Leaving out version number will default to '*' as the default version to dispatch. Example: `dispatchpkt S_ABNORMALITY_BEGIN 2`
-* `dispatch` - Dispatches the <packetname> dictated with 'dispatchpkt' OR the default one.  The packet info being sent will be <content>, which is loaded into when using 'dispatchload'
+* `dispatch` - Dispatches the <packetname> dictated with 'dispatchpkt' OR the default one.  The packet info being sent will be the one written in content.js. This command now reads content.js, parses it and dispatches as the packet dictated by `dispatchpkt` command.
 
 ## Usage
-- Write the packetinfo in object form in content.json.
-- Use dispatchload command
-- Use dispatchpkt <packetname> <version>, unless default packet and version is desired.
-- Use dispatch command.
+- Write the packet info in object form in content.json (See 'working with JSON' on the format)
+- Use `dispatchpkt <packetname> <version>`, unless default packet and version is desired, OR you have already changed it previously and wish to use the same packet (in which case you just skip straight to `dispatch` command).
+- Use `dispatch` command.
