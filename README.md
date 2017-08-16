@@ -21,6 +21,8 @@ title:'hello',
 arrayobj:{array1:[1211,21212,21212,,,],key2:121}  //comments allowed too 
 }
 
+For more, read: https://github.com/json5/json5
+
 ## Commands
 Type commands in /proxy chat or prefix with '!' in other chats
 
