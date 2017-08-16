@@ -1,31 +1,32 @@
 # Packet-Dispatcher
-A Tera Proxy module that dispatches packets without restarting proxy using .json file editing. Only for toClient dispatches, you want toServer, do at your own risk. 
+A Tera Proxy module that dispatches packets without restarting proxy using .json file editing. 
 
-Requires commands module by Pinkie-Pie
+Requires:
+- commands module by Pinkie-Pie
+
+Uses:
+- json5.js by github.com/json5 (Edited slightly and already included in this module)
 
 Defaults in index.js can be changed. Set showinfo to true to show the packetinfo being sent to client by this module in console.
 
-## Working with JSON
-JSON file parsing requires additional syntax format to be used. Learn more at: https://www.w3schools.com/js/js_json_syntax.asp.
+## JSON5 implementation
+Unlike the previous branch where json was used, in JSON5, you can type objects in content.json as per how you would write in normal js files, without the need for double quotes (" ") in object keys and strings. json5.js was also further modified by me to not throw an error incase you typed something incorrectly. Check console and you can tell easily if is the wrong info sent, since no error will be thrown, the packet will continue to be attempted to be sent.
 
-Some important points when working with JSON files are:
-* Use double quotes(" ") when writing object properties/keys and strings
-* DO NOT USE single quotes(' ') for strings. You MUST use double quotes. The proxy will crash if you use single.
-* Only write as an object.
+Example of a content.json
 
-Example: in content.json, we can see an example in the included content.json:
-
-`{"channel":24,"authorID":0,"unk1":0,"gm":0,"unk2":0,"authorName":"Lel","message": "poopy"}`
-
-This is a packet for S_CHAT, and the string values and keys of the packet info object are enclosed in double quotes (" "). If you do not do this, parsing the json file later on throws an error that force closes proxy. Bad example is:
-
-`{channel:24,"authorID":0,"unk1":0,"gm":0,"unk2":0,'authorName':'Lel',"message": 'poopy'}`
+{
+unk1:1,
+unk2:1,
+title:'hello',
+arrayobj:{array1:[1211,21212,21212,,,],key2:121}  //comments allowed too 
+}
 
 ## Commands
 Type commands in /proxy chat or prefix with '!' in other chats
 
 * `dispatchpkt <packetname> <version>` - Changes packet and version to dispatch. Leaving out version number will default to '*' as the default version to dispatch. Example: `dispatchpkt S_ABNORMALITY_BEGIN 2`
 * `dispatch` - Dispatches the <packetname> dictated with 'dispatchpkt' OR the default one.  The packet info being sent will be the one written in content.json. This command now reads content.json, parses it and dispatches as the packet dictated by `dispatchpkt` command.
+* `dispatchserver` - Same function as `dispatch` but it is toServer. Use this at your own risk. Make sure you check your defs and every single packet info being sent is correct.
 
 ## Usage
 - Write the packet info in object form in content.json (See 'working with JSON' on the format)
