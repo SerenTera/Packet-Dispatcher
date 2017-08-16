@@ -5,6 +5,8 @@ Requires commands module by Pinkie-Pie
 
 Defaults in index.js can be changed. Set showinfo to true to show the packetinfo being sent to client by this module in console.
 
+A new implementation using JSON5 is in the branch 'json5-implementation'
+
 ## Working with JSON
 JSON file parsing requires additional syntax format to be used. Learn more at: https://www.w3schools.com/js/js_json_syntax.asp.
 
